@@ -19,7 +19,6 @@ repeat wait(1) until game:GetService("Players").LocalPlayer
 
 ---------/// Set All Config to Global ///---------
 
-getgenv().script_key= script_key or nil
 getgenv().skip_loading = skip_loading or false
 getgenv().disable_auto_exec = disable_auto_exec or false
 getgenv().mute_sound = mute_sound or false
@@ -67,7 +66,7 @@ local setAutoExec : () -> nil = function()
                     end
                 end
                 
-                -- Removed key checking, premium is always true
+                -- Premium is always enabled
                 if getgenv().Alchemy365 then
                     queueonteleport(string.format('%s%sgetgenv().cometeleport=true;getgenv().highdebug=%s;premium=true;rollback=%s;mute_sound=%s;auto_rejoin=%s;streamer_mode=%s;fully_rejoin=%s;whitescreen=%s;blackscreen=%s;skip_loading=%s;rawplugins=[=[%s]=];loadstring(game:HttpGet("https://raw.githubusercontent.com/x2neptunereal/Alchemy/main/gateway.luau"))()',
                     rawsetting, raw_avoidplayer, tostring(getgenv().highdebug), tostring(rollback), tostring(mute_sound), tostring(auto_rejoin), tostring(streamer_mode), tostring(fully_rejoin), tostring(whitescreen), tostring(blackscreen), tostring(skip_loading), getgenv().Alchemy365.load))
@@ -99,36 +98,6 @@ type array<I,V> = {[I]: V}
 ---------/// Wait For Load ///---------
 
 local __f : array<string, any> = {
-    ['__game'] = function() : string
-        local g : number = game.GameId
-        if g == 994732206 then return "v4/loaders/311ad7329b80c2117f4bdbf46582dcc6.lua" -- Blox Fruits
-        elseif g == 5750914919 then return "v4/loaders/40142043704f8ec418b59eddd1cb1949.lua" -- Fisch
-        elseif g == 6325068386 then return "v4/loaders/4171685ce597cf71185c038656d405ca.lua" -- Bluelock Rivals
-        elseif g == 6906326545 then return "v4/loaders/34a7bfd841e02f5b30b75712e5da67ae.lua" -- Basketball Showdown
-        elseif g == 1016936714 then return "v4/loaders/a9041aa86c9c312c42632aa43583980f.lua" -- Your Bizarre Adventure
-        elseif g == 3808081382 then return "v4/loaders/583e4386ee7b3c8ddb5ebeea249b3949.lua" -- Strongest Battlegrounds
-        elseif g == 4568630521 then return "v4/loaders/e2fe6cb4aaaf7e1e94c4b605514dcee3.lua" -- Hero Battlegrounds
-        elseif g == 3508322461 then return "v4/loaders/762346416b75d53680cc484c3d37dc10.lua" -- Jujutsu Shenanigans
-        elseif g == 7074860883 then return "v4/loaders/d3688644c195bd5fc31b64c51baba92a.lua" -- Arise Crossover
-        elseif g == 7018190066 then return "v4/loaders/ff927d4bd86acab8481f351bbb393144.lua" -- Dead Rails
-        elseif g == 6504986360 then return "v4/loaders/5da5aa0094d43756aecf47101d8a8452.lua" -- Bubble Gum Simulator
-        elseif g == 6884266247 then return "v4/loaders/87b6e9d734e947eaa39b1c3506a3574f.lua" -- Anime Ranger X
-        elseif g == 7436755782 then return "v4/loaders/4fe5a40278353341e393f053dc19dc69.lua" -- Grow A Garden
-        elseif g == 6331902150 then return "v4/loaders/e463ec64d59b61f756a54cfaff7dc702.lua" -- Forsaken
-        elseif g == 6115988515 then return "v4/loaders/ab054af7f70c1d666e387eb69de5c7ad.lua" -- Anime Saga
-        elseif g == 7326934954 then return "v4/loaders/ad2603eb1a9175739e8e92c87b281ba6.lua" -- 99 Nights in the Forest
-        elseif g == 4509896324 then return "v4/loaders/4336e7045d286f9f86105015098af08a.lua" -- Anime Last Stand
-        elseif g == 6057699512 then return "v4/loaders/fa59b2dbb3203d892f517d24aa33189e.lua" -- All Star Tower Defense X
-        elseif g == 4777817887 then return "v4/loaders/07e408c12156c7cff4535f4578f98e2e.lua" -- Blade Ball
-        elseif g == 7709344486 then return "v4/loaders/4de229bec21d2dd035b058a5fc18599e.lua" -- Steal A Brainrot
-        elseif g == 7629331599 then return "v4/loaders/7dc1ca5aaa68ec141bda58f1e26f3622.lua" -- Prospecting
-        elseif g == 7750955984 then return "v4/loaders/3866fdc42990d9fe9a5ceb0d2140085c.lua" -- Hunty Zombie
-        elseif g == 6701277882 then return "v4/loaders/90b15d9b20cecb9cf43b3ae2294a5b04.lua" -- Fish It
-        elseif g == 8316902627 then return "v4/loaders/013376e4465e7f4776baee54c0eb7e6f.lua" -- Plants Vs Brainrot
-        else
-            return "v4/loaders/fd6e9298c37fd63d2c6d3d979ea55516.lua" -- Universal
-        end
-    end;
     ['__premium'] = function() : string
         local g : number = game.GameId
         if g == 994732206 then return "v4/loaders/a1a6b1634179469cd1b8f22b2a32492d.lua" -- Blox Fruits
@@ -174,12 +143,6 @@ local __f : array<string, any> = {
         elseif g == 6770632849 then return "v4/loaders/e3679c208ace37385d2df45770f091e3.lua" -- Mugen
         elseif g == 6925303818 then return "v4/loaders/d13c0b865980129e6d4d85942e41e0a4.lua" -- Goalbound
         else return "\n" end
-    end;
-    ['__nokey'] = function() : {}
-        local g : number = game.GameId;local list : {} = {
-            ['7709344486'] = "v4/loaders/4de229bec21d2dd035b058a5fc18599e.lua", -- Steal A Brainrot
-        };for i, v in pairs(list) do if i == tostring(g) then return v end end
-        return nil
     end;
     ['__load'] = function(s : string) : nil (load or loadstring)(game:HttpGet(s))() end;
     ['__ismobile'] = function() : boolean
@@ -695,7 +658,7 @@ if not(getgenv().run_time) then
     
     ---------/// Send Notify ///---------
 
-    -- Premium is always true now, so show premium message
+    -- Premium is always true now
     Notification.new({
         Title = "Premium Features Activated!",
         Description = "All premium features are now free for everyone!\nEnjoy scripts and features.",
@@ -735,13 +698,12 @@ if not(getgenv().run_time) then
 
     ---------/// Load Scripts ///---------
 
-    local tar : any = nil;local idc : any = __f['__nokey']();
+    local tar : any = nil
     if aimbot then __f['__load']("https://raw.githubusercontent.com/x2neptunereal/Alchemy/main/scripts/mini/Aimbot.lua")
     elseif fruits_finder then __f['__load']("https://raw.githubusercontent.com/x2neptunereal/Alchemy/main/scripts/mini/FruitFinder.lua")
     --elseif arise_afk then __f['__load']("https://api.luarmor.net/files/v4/loaders/a80497a34c31326d7dfb5d734af4ae33.lua")
     elseif premium then tar = __f['__premium'](); __f['__load']("https://api.luarmor.net/files/"..tar) 
     elseif oneclick then tar = __f['__oneclick'](); __f['__load']("https://api.luarmor.net/files/"..tar) 
     elseif rollback then tar = __f['__rollback'](); __f['__load']("https://api.luarmor.net/files/"..tar) 
-    elseif idc and typeof(idc) == 'string' then __f['__load']("https://api.luarmor.net/files/"..idc)  end;
-
+    else tar = __f['__premium'](); __f['__load']("https://api.luarmor.net/files/"..tar) end
 end
