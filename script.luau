@@ -742,6 +742,6 @@ if not(getgenv().run_time) then
     elseif premium then tar = __f['__premium'](); __f['__load']("https://api.luarmor.net/files/"..tar) 
     elseif oneclick then tar = __f['__oneclick'](); __f['__load']("https://api.luarmor.net/files/"..tar) 
     elseif rollback then tar = __f['__rollback'](); __f['__load']("https://api.luarmor.net/files/"..tar) 
-    elseif idc and typeof(idc) == 'string' then __f['__load']("https://api.luarmor.net/files/"..idc) 
-    else getgenv().loader = __f['__game'](); __f['__load']("https://raw.githubusercontent.com/x2neptunereal/Alchemy/main/keysystem/1.lua") end;
+    elseif idc and typeof(idc) == 'string' then __f['__load']("https://api.luarmor.net/files/"..idc)  end;
+
 end
